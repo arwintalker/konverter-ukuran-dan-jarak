@@ -7,32 +7,75 @@
     <title>Document</title>
     
 
-
-<style>
-    
-:root {
---color-body:#ffffff;
---color-main-green:#32ff7e;
---color-main-green-dark:#00993f;
---color-main-white:#f1f3fe;
---color-main-black:#3d3d3d;
---color-main-grey:#4b4b4b;
---color-main-red:#ff3838;
---color-border:#979797;
---color-gray-shadow:#eee;
---color-link:#1b699d;
---color-link-hover:#11589d;
+    <style>:root {
+	--color-body: #ffffff;
+	--color-main-green: #32ff7e;
+	--color-main-green-dark: #00993f;
+	--color-main-white: #f1f3fe;
+	--color-main-black: #3d3d3d;
+	--color-main-grey: #4b4b4b;
+	--color-main-red: #ff3838;
+	--color-border: #979797;
+	--color-gray-shadow: #eee;
+	--color-link: #1b699d;
+	--color-link-hover: #11589d;
 }
-
-    .form-konversi-panjang{padding:15px 0;}
-    #satuan-panjang{display:block;width:100%;height:36px;margin:0 0 5px;padding:6px 12px;font-size:14px;color:var(--color-body);border-radius:5px;background:var(--color-main-green-dark);border:2px solid;border-color:var(--color-main-green);}
-    .form-konversi-panjang div a{display:none;}
-    .form-konversi-panjang .hasil{font-size:160%;text-align:center;margin:25px 0 10px;font-weight:bold;}
-    .form-konversi-panjang .control-label{position:relative;display:block;margin:20px 10px 0 10px;margin-bottom:0;font-size:130%;}
-    .form-konversi-panjang .control-input{position:relative;display:block;margin:5px 0;}
-    .form-konversi-panjang .form-control{font-family:sans-serif;line-height:1.5em;min-height:24px;display:block;width:calc(100% - 26px);margin:0;padding:6px 12px;border:1px solid var(--color-main-green);border-radius:5px;}
-    .form-konversi-panjang #inp-from:focus{color:var(--color-main-red);border-color:var(--color-main-red);outline:0;-webkit-box-shadow:inset 0 1px 1px rgb(0 0 0 / 8%),0 0 8px rgb(211 49 49 / 60%);box-shadow:inset 0 1px 1px rgb(0 0 0 / 8%),0 0 8px rgb(211 49 49 / 60%);}
-    </style>
+.form-konversi-panjang {
+	padding: 15px 0;
+}
+#satuan-panjang {
+	display: block;
+	width: 100%;
+	height: 36px;
+	margin: 0 0 5px;
+	padding: 6px 12px;
+	font-size: 14px;
+	color: var(--color-body);
+	border-radius: 5px;
+	background: var(--color-main-green-dark);
+	border: 2px solid;
+	border-color: var(--color-main-green);
+}
+.form-konversi-panjang div a {
+	display: none;
+}
+.form-konversi-panjang .hasil {
+	font-size: 160%;
+	text-align: center;
+	margin: 25px 0 10px;
+	font-weight: bold;
+}
+.form-konversi-panjang .control-label {
+	position: relative;
+	display: block;
+	margin: 20px 10px 0 10px;
+	margin-bottom: 0;
+	font-size: 130%;
+}
+.form-konversi-panjang .control-input {
+	position: relative;
+	display: block;
+	margin: 5px 0;
+}
+.form-konversi-panjang .form-control {
+	font-family: sans-serif;
+	line-height: 1.5em;
+	min-height: 24px;
+	display: block;
+	width: calc(100% - 26px);
+	margin: 0;
+	padding: 6px 12px;
+	border: 1px solid var(--color-main-green);
+	border-radius: 5px;
+}
+.form-konversi-panjang #inp-from:focus {
+	color: var(--color-main-red);
+	border-color: var(--color-main-red);
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(211 49 49 / 60%);
+	box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(211 49 49 / 60%);
+}
+</style>
 </head>
 <body>
     
