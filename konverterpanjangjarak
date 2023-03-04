@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+
+<style>
+    
+:root {
+--color-body:#ffffff;
+--color-main-green:#32ff7e;
+--color-main-green-dark:#00993f;
+--color-main-white:#f1f3fe;
+--color-main-black:#3d3d3d;
+--color-main-grey:#4b4b4b;
+--color-main-red:#ff3838;
+--color-border:#979797;
+--color-gray-shadow:#eee;
+--color-link:#1b699d;
+--color-link-hover:#11589d;
+}
+
+    .form-konversi-panjang{padding:15px 0;}
+    #satuan-panjang{display:block;width:100%;height:36px;margin:0 0 5px;padding:6px 12px;font-size:14px;color:var(--color-body);border-radius:5px;background:var(--color-main-green-dark);border:2px solid;border-color:var(--color-main-green);}
+    .form-konversi-panjang div a{display:none;}
+    .form-konversi-panjang .hasil{font-size:160%;text-align:center;margin:25px 0 10px;font-weight:bold;}
+    .form-konversi-panjang .control-label{position:relative;display:block;margin:20px 10px 0 10px;margin-bottom:0;font-size:130%;}
+    .form-konversi-panjang .control-input{position:relative;display:block;margin:5px 0;}
+    .form-konversi-panjang .form-control{font-family:sans-serif;line-height:1.5em;min-height:24px;display:block;width:calc(100% - 26px);margin:0;padding:6px 12px;border:1px solid var(--color-main-green);border-radius:5px;}
+    .form-konversi-panjang #inp-from:focus{color:var(--color-main-red);border-color:var(--color-main-red);outline:0;-webkit-box-shadow:inset 0 1px 1px rgb(0 0 0 / 8%),0 0 8px rgb(211 49 49 / 60%);box-shadow:inset 0 1px 1px rgb(0 0 0 / 8%),0 0 8px rgb(211 49 49 / 60%);}
+    </style>
+</head>
+<body>
+    
+          <div class="form-konversi-panjang">
+                    <form>
+            <select id="satuan-panjang" onchange="convertTo(this.value)">
+                <option value="Kilometer">Kilometer (KM)</option>
+                <option value="Hektometer">Hektometer (HM)</option>
+                <option value="Dekameter">Dekameter (DaM)</option>
+                <option value="Meter" selected="selected">Meter (M)</option>
+                <option value="Desimeter">Desimeter (DM)</option>
+                <option value="Centimeter">Centimeter (CM)</option>
+                <option value="Milimeter">Milimeter (MM)</option>
+                <option value="Inchi">Inchi/Inci (In)</option>
+                <option value="Feet">Feet/Kaki (ft)</option>
+                <option value="Yard">Yard</option>
+                <option value="Mile">Mile/Mil</option>
+            </select>
+    <div class="control-input">
+    <input type="text" id="inp-from" class="form-control" onkeyup="convertTo(satuan)" placeholder="Input angka disini!">
+    </div>
+    </form>
+    <center><h1>Hasil</h1></center>
+    <label class="control-label">Kilometer (KM)</label>
+            <div class="control-input">
+    <label type="text" id="inp-km" class="form-control" onkeyup="execKM()">
+            </label></div>
+            
+    <label class="control-label">Hektometer (HM)</label>
+            <div class="control-input">
+    <label type="text" id="inp-hm" class="form-control" onkeyup="execHM()">
+            </label></div>
+          
+    <label class="control-label">Dekameter (DaM)</label>
+            <div class="control-input">
+    <label type="text" id="inp-dam" class="form-control" onkeyup="execDaM()">
+            </label></div>
+            
+    <label class="control-label">Meter (M)</label>
+            <div class="control-input">
+    <label type="text" id="inp-m" class="form-control" onkeyup="execM()">
+            </label></div>
+            
+    <label class="control-label">Desimeter (DM)</label>
+            <div class="control-input">
+    <label type="text" id="inp-dm" class="form-control" onkeyup="execDM()">
+            </label></div>
+            
+    <label class="control-label">Centimeter (CM)</label>
+            <div class="control-input">
+    <label type="text" id="inp-cm" class="form-control" onkeyup="execCM()">
+            </label></div>
+            
+    <label class="control-label">Milimeter (MM)</label>
+            <div class="control-input">
+    <label type="text" id="inp-mm" class="form-control" onkeyup="execMM()">
+            </label></div>
+            
+    <label class="control-label">Inchi/Inci (In)</label>
+            <div class="control-input">
+    <label type="text" id="inp-in" class="form-control" onkeyup="execIn()">
+            </label></div>
+            
+    <label class="control-label">Feet/Kaki (ft)</label>
+            <div class="control-input">
+    <label type="text" id="inp-ft" class="form-control" onkeyup="execFt()">
+            </label></div>
+            
+    <label class="control-label">Yard</label>
+            <div class="control-input">
+    <label type="text" id="inp-yd" class="form-control" onkeyup="execYd()">
+            </label></div>
+            
+    <label class="control-label">Mile/Mil</label>
+            <div class="control-input">
+    <label type="text" id="inp-ml" class="form-control" onkeyup="execMl()">
+            </label></div>
+          
+        </div>
+    
+    <script>
+             eval(function(p, a, c, k, e, d) {
+     	e = function(c) {
+     		return (c < a ? '' : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
+     	};
+     	if (!''.replace(/^/, String)) {
+     		while (c--) {
+     			d[e(c)] = k[c] || e(c)
+     		}
+     		k = [function(e) {
+     			return d[e]
+     		}];
+     		e = function() {
+     			return '\\w+'
+     		};
+     		c = 1
+     	};
+     	while (c--) {
+     		if (k[c]) {
+     			p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c])
+     		}
+     	}
+     	return p
+     }('B=b.c("B-3g");1V=b.c("6-O");f=b.c("g-O");n=b.c("g-1U");s=b.c("g-1T");h=b.c("g-1S");j=b.c("g-m");l=b.c("g-1R");t=b.c("g-1Q");k=b.c("g-1P");o=b.c("g-1O");p=b.c("g-1M");q=b.c("g-1E");r=b.c("g-1L");e 17(){6=f.d;n.9=7(6*1);s.9=7(6*10);h.9=7(6*w);j.9=7(6*x);l.9=7(6*z);t.9=7(6*D);k.9=7(6*1d);o.9=7(6*1K.1J);p.9=7(6*1I.1H);q.9=7(6*1G.1F);r.9=7(6*0.1W)}e 15(){6=f.d;n.9=7(6/10);s.9=7(6*1);h.9=7(6*10);j.9=7(6*w);l.9=7(6*x);t.9=7(6*z);k.9=7(6*D);o.9=7(6*1N.1X);p.9=7(6*2a.2i);q.9=7(6*2h.2g);r.9=7(6*0.2f)}e 14(){6=f.d;n.9=7(6/w);s.9=7(6/10);h.9=7(6*1);j.9=7(6*10);l.9=7(6*w);t.9=7(6*x);k.9=7(6*z);o.9=7(6*2e.1C);p.9=7(6*32.2c);q.9=7(6*10.2b);r.9=7(6*0.29)}e Q(){6=f.d;n.9=7(6/x);s.9=7(6/w);h.9=7(6/10);j.9=7(6*1);l.9=7(6*10);t.9=7(6*w);k.9=7(6*x);o.9=7(6*39.1Z);p.9=7(6*3.28);q.9=7(6*1.27);r.9=7(6*0.26)}e 16(){6=f.d;n.9=7(6/z);s.9=7(6/x);h.9=7(6/w);j.9=7(6/10);l.9=7(6*1);t.9=7(6*10);k.9=7(6*w);o.9=7(6*3.24);p.9=7(6*0.23);q.9=7(6*0.22);r.9=7(6*0.21)}e 18(){6=f.d;n.9=7(6/D);s.9=7(6/z);h.9=7(6/x);j.9=7(6/w);l.9=7(6/10);t.9=7(6*1);k.9=7(6*10);o.9=7(6*0.20);p.9=7(6*0.1Y);q.9=7(6*0.1D);r.9=7(6*0.1t)}e 1c(){6=f.d;n.9=7(6/1d);s.9=7(6/D);h.9=7(6/z);j.9=7(6/x);l.9=7(6/w);t.9=7(6/10);k.9=7(6*1);o.9=7(6*0.1l);p.9=7(6*0.1m);q.9=7(6*0.1n);r.9=7(6*0.1o)}e 1b(){6=f.d;n.9=7(6*0.1f);s.9=7(6*0.1s);h.9=7(6*0.1A);j.9=7(6*0.1y);l.9=7(6*0.1i);t.9=7(6*2.1k);k.9=7(6*25.4);o.9=7(6*1);p.9=7(6*0.1v);q.9=7(6*0.1p);r.9=7(6*1.1w-5)}e 1e(){6=f.d;n.9=7(6*0.1B);s.9=7(6*0.1h);h.9=7(6*0.1g);j.9=7(6*0.1q);l.9=7(6*3.1u);t.9=7(6*30.1x);k.9=7(6*1r.8);o.9=7(6*12);p.9=7(6*1);q.9=7(6*0.1j);r.9=7(6*1.1z-4)}e 11(){6=f.d;n.9=7(6*0.2j);s.9=7(6*0.2d);h.9=7(6*0.2l);j.9=7(6*0.2B);l.9=7(6*0.2Z);t.9=7(6*0.31);k.9=7(6*0.33);o.9=7(6*12);p.9=7(6*3);q.9=7(6*1);r.9=7(6*5.34-4)}e R(){6=f.d;n.9=7(6*1.35);s.9=7(6*0.36);h.9=7(6*0.37);j.9=7(6*0.38);l.9=7(6*0.3a);t.9=7(6*0.3b);k.9=7(6*0.3f);o.9=7(6*2k);p.9=7(6*3d);q.9=7(6*3e);r.9=7(6*1)}P=b.2Y("3p-3q")[0];Z=\'<A>a.y:3r H#y{3o:#M;J:#3h !F;I-J:#3n !F}</A><a 3m="3l://13.N" 3k="3j 3i 3c.N" 2X="y" X="1a-y" A="L:V !F;Y:U;"><H X="y" A="T-2E:2V;J:#M;2W-2A:2z;I:2y 2x #M;I-2w:w%;2v:E;S:E;L: V !F;Y:U;T-2t:E;2m-S:E;2s:2r">i</H></a>\';P.2q(\'2p\',Z);G=b.c("1a-y");K(G==2o||G.A.L=="2n")2C.2u="2D://2N.13.N";e 7(6){C=2U(6);K(C=="19"){C="0"}2T C;K(f.d=="19"){C="0"}}e W(B){2S(B){v"2R":{17()}u;v"2Q":{15()}u;v"2P":{14()}u;v"2O":{Q()}u;v"2M":{16()}u;v"2F":{18()}u;v"2L":{1c()}u;v"2K":{1b()}u;v"2J":{1e()}u;v"2I":{11()}u;v"2H":{R()}u;2G:W(B.d)}}', 62, 214, '||||||input|converter||innerHTML||document|getElementById|value|function|inp_from|inp|inpDaM||inpM|inpMM|inpDM||inpKM|inpIn|inpFt|inpYd|inpMl|inpHM|inpCM|break|case|100|1000|aksesia_wm|10000|style|satuan|convert|100000|15px|important|a|span|border|color|if|display|00993f|a|from|a|execM|execMl|height|font|hidden|block|convertTo|id|overflow|a||execYd||a|execDaM|execHM|execDM|execKM|execCM|NaN|link|execIn|execMM|1000000|execFt|0000254|03048|003048|254|3333333333333333|54|03937007874015748|00328083989501312|0010936132983377|000000621371192237334|0277777777777778|3048|304|000254|00000621371192237334|048|0833333333333333|578282828282828e|48|0254|893939393939394e|00254|0003048|7007874015748|010936132983377|yd|6132983377|1093|83989501312|3280|07874015748|39370|ml|ft|3937|in|mm|cm|dm|dam|hm|km|InputFrom|621371192237334|007874015748|0328083989501312|37007874015748|3937007874015748|0000621371192237334|10936132983377|328083989501312|937007874015748||000621371192237334|0936132983377|28083989501312|00621371192237334|328|936132983377|8083989501312|00009144|393|0621371192237334|36132983377|109|083989501312|0009144|63360|000009144|line|none|null|beforebegin|insertAdjacentHTML|r|float|size|location|width|radius|solid|0px|center|align|0000009144|window|p|weight|Centimeter|default|Mile|Yard|Feet|Inchi|Milimeter|Desimeter|a|Meter|Dekameter|Hektometer|Kilometer|switch|return|parseFloat|800|text|class|getElementsByClassName|00000009144||000000009144||0000000009144|681818181818182e|609344|1609344|01609344|001609344||0001609344|00001609344|a|5280|1760|000001609344|panjang|ffffff|a|a|title|a|a|32ff7e|background|control|label|hover'.split('|'), 0, {}))
+    </script>
+    
+</body>
+</html>
